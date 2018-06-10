@@ -157,11 +157,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-.gitignore
 .gradle/
 .idea/
-build.gradle
 build/
-settings.gradle
-src/
 !/.gitignore
