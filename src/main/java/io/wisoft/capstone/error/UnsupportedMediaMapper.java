@@ -7,7 +7,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class UnsupportedMediaMapper extends ErrorCommands implements ExceptionMapper<UnsupportedMediaException> {
+public class UnsupportedMediaMapper extends ErrorCommand implements ExceptionMapper<UnsupportedMediaException> {
 
   @Override
   public Response toResponse(UnsupportedMediaException exception) {

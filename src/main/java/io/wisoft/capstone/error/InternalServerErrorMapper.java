@@ -6,7 +6,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class InternalServerErrorMapper extends ErrorCommands implements ExceptionMapper<InternalServerErrorException> {
+public class InternalServerErrorMapper extends ErrorCommand implements ExceptionMapper<InternalServerErrorException> {
 
   @Override
   public Response toResponse(InternalServerErrorException exception) {

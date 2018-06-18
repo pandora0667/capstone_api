@@ -7,7 +7,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class NotImplementedMapper extends ErrorCommands implements ExceptionMapper<NotImplementedException> {
+public class NotImplementedMapper extends ErrorCommand implements ExceptionMapper<NotImplementedException> {
 
   @Override
   public Response toResponse(NotImplementedException exception) {

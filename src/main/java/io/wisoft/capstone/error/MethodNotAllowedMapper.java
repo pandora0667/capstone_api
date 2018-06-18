@@ -6,7 +6,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class MethodNotAllowedMapper extends ErrorCommands implements ExceptionMapper<NotAllowedException> {
+public class MethodNotAllowedMapper extends ErrorCommand implements ExceptionMapper<NotAllowedException> {
 
   @Override
   public Response toResponse(NotAllowedException exception) {

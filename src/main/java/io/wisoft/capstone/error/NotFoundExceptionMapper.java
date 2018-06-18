@@ -6,7 +6,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class NotFoundExceptionMapper extends ErrorCommands implements ExceptionMapper<NotFoundException> {
+public class NotFoundExceptionMapper extends ErrorCommand implements ExceptionMapper<NotFoundException> {
 
   @Override
   public Response toResponse(javax.ws.rs.NotFoundException exception) {

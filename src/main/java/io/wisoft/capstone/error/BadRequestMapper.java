@@ -6,7 +6,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class BadRequestMapper extends ErrorCommands implements ExceptionMapper<BadRequestException> {
+public class BadRequestMapper extends ErrorCommand implements ExceptionMapper<BadRequestException> {
 
   @Override
   public Response toResponse(BadRequestException exception) {

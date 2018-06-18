@@ -11,7 +11,7 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="io.wisoft.capstone.vo.Sensors" alias="sensors"/>
+        <typeAlias type="io.wisoft.capstone.vo.Sensor" alias="sensors"/>
         <typeAlias type="io.wisoft.capstone" alias="users"/>
     </typeAliases>
 
