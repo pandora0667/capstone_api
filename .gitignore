@@ -161,3 +161,6 @@ Temporary Items
 .idea/
 build/
 !/.gitignore
+/src/main/java/io/wisoft/capstone/encryption/secretKey.txt
+src/test/
+/src/main/java/test/
