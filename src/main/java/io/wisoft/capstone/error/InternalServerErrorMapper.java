@@ -10,7 +10,7 @@ public class InternalServerErrorMapper extends ErrorCommand implements Exception
 
   @Override
   public Response toResponse(InternalServerErrorException exception) {
-    return Response.status(Response.Status.NOT_FOUND)
+    return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
         .entity(error(INTERNAL_SERVER_ERROR))
         .build();
   }

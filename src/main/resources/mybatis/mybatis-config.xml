@@ -11,8 +11,9 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="io.wisoft.capstone.vo.Sensor" alias="sensors"/>
-        <typeAlias type="io.wisoft.capstone" alias="users"/>
+        <typeAlias type="io.wisoft.capstone.vo.Sensor" alias="sensor"/>
+        <typeAlias type="io.wisoft.capstone.vo.User" alias="user"/>
+        <typeAlias type="io.wisoft.capstone.vo.Device" alias="device"/>
     </typeAliases>
 
     <environments default="development">
@@ -28,6 +29,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="./mybatis/mapper/account.xml"/>
+        <mapper resource="mybatis/mapper/PgsqlUserDao.xml"/>
+        <mapper resource="mybatis/mapper/PgsqlDeviceDao.xml"/>
     </mappers>
 </configuration>

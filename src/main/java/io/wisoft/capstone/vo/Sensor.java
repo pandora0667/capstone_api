@@ -2,6 +2,8 @@ package io.wisoft.capstone.vo;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -15,5 +17,7 @@ public class Sensor {
   private double accelerationX;
   private double accelerationY;
   private double accelerationZ;
-  private int time;
+  private int sTime;
+  private int statusCode;
+  private Date accidentTime;
 }
