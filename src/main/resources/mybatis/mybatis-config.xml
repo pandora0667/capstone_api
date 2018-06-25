@@ -14,6 +14,7 @@
         <typeAlias type="io.wisoft.capstone.vo.Sensor" alias="sensor"/>
         <typeAlias type="io.wisoft.capstone.vo.User" alias="user"/>
         <typeAlias type="io.wisoft.capstone.vo.Device" alias="device"/>
+        <typeAlias type="io.wisoft.capstone.vo.Car" alias="car"/>
     </typeAliases>
 
     <environments default="development">
@@ -31,5 +32,7 @@
     <mappers>
         <mapper resource="mybatis/mapper/PgsqlUserDao.xml"/>
         <mapper resource="mybatis/mapper/PgsqlDeviceDao.xml"/>
+        <mapper resource="mybatis/mapper/PgsqlCarDao.xml"/>
+        <mapper resource="mybatis/mapper/PgsqlSensorDao.xml"/>
     </mappers>
 </configuration>

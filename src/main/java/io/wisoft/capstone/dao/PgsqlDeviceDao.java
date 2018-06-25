@@ -9,6 +9,8 @@ import java.util.List;
 public class PgsqlDeviceDao implements DeviceDao {
   private SqlSessionFactory sqlSessionFactory = DatabaseConnection.getInstance();
 
+
+
   @Override
   public List<Device> selectAll() {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {

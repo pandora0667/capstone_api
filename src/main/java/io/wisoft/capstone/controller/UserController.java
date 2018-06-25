@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 public class UserController extends ResponseCommand{
   private static PgsqlUserDao pgsqlUserDao = new PgsqlUserDao();
+
   @GET
   public Response getAllUser() {
     return Response.status(Response.Status.OK).entity(getOK()).build();

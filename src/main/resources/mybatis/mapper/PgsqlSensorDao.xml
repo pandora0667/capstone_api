@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.wisoft.capstone.dao.SensorDao">
+    <resultMap type="sensor" id="SensorResultMap">
+        <id column="ID" property="id"/>
+        <result column="inclination" property="inclination"/>
+        <result column="latitude" property="latitude"/>
+        <result column="longitude" property="longitude"/>
+        <result column="accelerationX" property="accelerationX"/>
+        <result column="accelerationY" property="accelerationY"/>
+        <result column="sTime" property="sTime"/>
+        <result column="statusCode" property="statusCode"/>
+        <result column="accidentTime" property="accidentTime"/>
+    </resultMap>
+
+
+</mapper>

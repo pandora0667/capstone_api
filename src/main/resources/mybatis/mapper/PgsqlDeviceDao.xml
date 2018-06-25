@@ -5,7 +5,7 @@
 <mapper namespace="io.wisoft.capstone.dao.DeviceDao">
     <resultMap type="device" id="DeviceResultMap">
         <id column="ID" property="id"/>
-        <result column="DEVICEID" property="device_id"/>
+        <result column="deviceID" property="deviceID"/>
     </resultMap>
 
     <select id="selectAll" resultMap="DeviceResultMap">
@@ -16,10 +16,9 @@
         SELECT * FROM DEVICES WHERE id=#{id};
     </select>
 
-    <insert id="insert" parameterType="int">
-        INSERT INTO DEVICES VALUES (#{device_id} #{id});
+    <insert id="insert" parameterType="user">
+        INSERT INTO DEVICES VALUES (#{deviceID} #{id});
     </insert>
-
 
     <delete id="delete" parameterType="int">
         DELETE FROM DEVICES WHERE id=#{id};

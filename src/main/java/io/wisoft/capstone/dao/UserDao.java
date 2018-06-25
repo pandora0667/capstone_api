@@ -5,7 +5,10 @@ import io.wisoft.capstone.vo.User;
 import java.util.List;
 
 public interface UserDao {
-  List<User> selectAll() throws Exception;
-  User selectOne(final String id) throws Exception;
-  int insert(final User user) throws Exception;
+  List<User> selectAll();
+  User selectOne(final String id);
+  int insert(final User user);
+  int update(final User user);
+  int delete(final String id);
+
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class DevicesController extends ResponseCommand{
 
   //TODO 싱글톤
-  private PgsqlDeviceDao pgsqlDeviceDao = new PgsqlDeviceDao();
+  private static PgsqlDeviceDao pgsqlDeviceDao = new PgsqlDeviceDao();
 
   @GET
   public Response getAllDevices() {
