@@ -2,16 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.wisoft.capstone.dao.UserDao">
-    <resultMap type="user" id="UserResultMap">
+<mapper namespace="io.wisoft.capstone.dao.InterfaceCustomerDao">
+    <resultMap type="customer" id="UserResultMap">
         <id column="ID" property="id"/>
         <result column="USERNAME" property="username"/>
+        <result column="PASSWORD" property="password"/>
+        <result column="NAME" property="name"/>
         <result column="EMAIL" property="email"/>
         <result column="PHONE" property="phone"/>
-        <result column="PASSWORD" property="password"/>
     </resultMap>
 
-    <insert id="insert" parameterType="user">
-        INSERT INTO USERS VALUES (#{id},  #{username}, #{password}, #{email}, #{phone})
+    <insert id="insert" parameterType="customer">
+        INSERT INTO USERS VALUES (#{id},  #{password}, #{name}, #{email}, #{phone})
     </insert>
 </mapper>

@@ -1,35 +1,35 @@
 package io.wisoft.capstone.dao;
 
-import io.wisoft.capstone.vo.User;
+import io.wisoft.capstone.vo.Customer;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;
 
-public class PgsqlUserDao implements UserDao {
+public class CustomerDao implements InterfaceCustomerDao {
   private SqlSessionFactory sqlSessionFactory = DatabaseConnection.getInstance();
 
   @Override
-  public List<User> selectAll() {
+  public List<Customer> selectAll() {
     return null;
   }
 
   @Override
-  public User selectOne(String id) {
+  public Customer selectOne(String id) {
     return null;
   }
 
   @Override
-  public int insert(User user) {
+  public int insert(Customer customer) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()){
-      int count = sqlSession.insert("io.wisoft.capstone.dao.UserDao.insert", user);
+      int count = sqlSession.insert("io.wisoft.capstone.dao.InterfaceUserDao.insert", customer);
       sqlSession.commit();
       return count;
     }
   }
 
   @Override
-  public int update(final User user) {
+  public int update(final Customer customer) {
     return 0;
   }
 

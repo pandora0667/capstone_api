@@ -7,7 +7,6 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Device {
-  private String id;
-  private String deviceID;
+public class Collector {
+  private String serial;
 }

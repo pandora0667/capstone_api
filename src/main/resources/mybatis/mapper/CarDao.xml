@@ -2,11 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.wisoft.capstone.dao.CarDao">
+<mapper namespace="io.wisoft.capstone.dao.InterfaceCarDao">
     <resultMap type="car" id="carResultMap">
         <id column="ID" property="id"/>
-        <result column="carType" property="carType"/>
-        <result column="carNumber" property="carNumber"/>
+        <result column="KIND" property="kind"/>
+        <result column="NUMBER" property="number"/>
     </resultMap>
-
 </mapper>

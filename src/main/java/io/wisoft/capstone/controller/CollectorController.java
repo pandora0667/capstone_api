@@ -1,27 +1,28 @@
 package io.wisoft.capstone.controller;
 
-import io.wisoft.capstone.dao.PgsqlDeviceDao;
-import io.wisoft.capstone.vo.Device;
+import io.wisoft.capstone.dao.CollectorDao;
+import io.wisoft.capstone.vo.Collector;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/devices")
+@Path("/collectors")
+
 @Produces(MediaType.APPLICATION_JSON)
-public class DevicesController extends ResponseCommand{
+public class CollectorController extends ResponseCommand{
 
   //TODO 싱글톤
-  private static PgsqlDeviceDao pgsqlDeviceDao = new PgsqlDeviceDao();
+  private static CollectorDao CollectorDao = new CollectorDao();
 
   @GET
-  public Response getAllDevices() {
+  public Response getCollectors() {
     try {
-      List<Device> devices = pgsqlDeviceDao.selectAll();
+      List<Collector> collectors = CollectorDao.selectAll();
 
-      for (Device device: devices) {
-        System.out.println(device.getDeviceID());
+      for (Collector collector : collectors) {
+        System.out.println(collector.getSerial());
       }
     } catch (Exception e) {
       System.out.println("error : " + e);
@@ -31,12 +32,12 @@ public class DevicesController extends ResponseCommand{
   }
 
   @GET
-  @Path("{deviceID}")
-  public Response getDevicesID(final @PathParam("deviceID")  String deviceID) {
+  @Path("{licensePlate}")
+  public Response getCollector(final @PathParam("licensePlate")  String licensePlate) {
     try {
-      List<Device> devices = pgsqlDeviceDao.select(deviceID);
-      for (Device device : devices) {
-        System.out.println(device);
+      List<Collector> collectors = CollectorDao.select(licensePlate);
+      for (Collector collector : collectors) {
+        System.out.println(collector);
       }
     } catch (Exception e) {
       System.out.println("error : " + e);
@@ -47,10 +48,10 @@ public class DevicesController extends ResponseCommand{
 
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response insertDeviceID(final Device device) {
+  public Response insertCollector(final Collector collector) {
     try {
-      System.out.println(device.toString());
-      System.out.println(pgsqlDeviceDao.insert(device));
+      System.out.println(collector.toString());
+      System.out.println(CollectorDao.insert(collector));
     } catch (Exception e) {
       System.out.println("error : " + e);
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(getInternalServerError()).build();
@@ -60,10 +61,10 @@ public class DevicesController extends ResponseCommand{
   }
 
   @DELETE
-  @Path("{deviceID}")
-  public Response deleteDeviceID(final @PathParam("deviceID") String deviceID) {
+  @Path("{licensePlate}")
+  public Response deleteCollector(final @PathParam("licensePlate") String licensePlate) {
     try {
-      System.out.println(pgsqlDeviceDao.delete(deviceID));
+      System.out.println(CollectorDao.delete(licensePlate));
     } catch (Exception e) {
       System.out.println("error : " + e);
       return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(getInternalServerError()).build();

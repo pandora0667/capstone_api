@@ -11,10 +11,11 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="io.wisoft.capstone.vo.Sensor" alias="sensor"/>
-        <typeAlias type="io.wisoft.capstone.vo.User" alias="user"/>
-        <typeAlias type="io.wisoft.capstone.vo.Device" alias="device"/>
+        <typeAlias type="io.wisoft.capstone.vo.Customer" alias="customer"/>
+        <typeAlias type="io.wisoft.capstone.vo.Collector" alias="collector"/>
         <typeAlias type="io.wisoft.capstone.vo.Car" alias="car"/>
+        <typeAlias type="io.wisoft.capstone.vo.Regular" alias="regular"/>
+        <typeAlias type="io.wisoft.capstone.vo.Accident" alias="accident"/>
     </typeAliases>
 
     <environments default="development">
@@ -30,9 +31,10 @@
     </environments>
 
     <mappers>
-        <mapper resource="mybatis/mapper/PgsqlUserDao.xml"/>
-        <mapper resource="mybatis/mapper/PgsqlDeviceDao.xml"/>
-        <mapper resource="mybatis/mapper/PgsqlCarDao.xml"/>
-        <mapper resource="mybatis/mapper/PgsqlSensorDao.xml"/>
+        <mapper resource="mybatis/mapper/CustomerDao.xml"/>
+        <mapper resource="mybatis/mapper/CollectorDao.xml"/>
+        <mapper resource="mybatis/mapper/CarDao.xml"/>
+        <mapper resource="mybatis/mapper/RegularDao.xml"/>
+        <mapper resource="mybatis/mapper/AccidentDao.xml"/>
     </mappers>
 </configuration>

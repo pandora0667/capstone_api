@@ -8,9 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class User {
+public class Customer {
   private String id;
-  private String username;
+  private String name;
   private String email;
   private String phone;
   private String password;

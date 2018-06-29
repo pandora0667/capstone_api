@@ -4,6 +4,6 @@ import io.wisoft.capstone.vo.Car;
 
 import java.util.List;
 
-public interface CarDao {
+public interface InterfaceCarDao {
   List<Car> getUserCars(final String id) throws Exception;
 }

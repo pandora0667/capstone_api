@@ -2,7 +2,6 @@ package io.wisoft.capstone.vo;
 
 import lombok.*;
 
-
 @Getter
 @Setter
 @ToString
@@ -10,6 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Car {
-  private String carType;
-  private String carNumber;
+  private String type;
+  private String licensePlate;
 }
