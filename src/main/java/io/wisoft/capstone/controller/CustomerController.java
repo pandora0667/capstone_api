@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/customers")
 @Produces(MediaType.APPLICATION_JSON)
-public class CustomerController extends ResponseCommand{
+public class CustomerController extends ResponseCommand {
   private static CustomerDao customerDao = new CustomerDao();
 
   @GET
@@ -27,6 +27,7 @@ public class CustomerController extends ResponseCommand{
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   public Response registerCustomer(final Customer customer) {
+
     try {
       System.out.println(customer.toString());
       int count = customerDao.insert(customer);

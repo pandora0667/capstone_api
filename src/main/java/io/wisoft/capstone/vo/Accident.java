@@ -9,11 +9,12 @@ import lombok.*;
 @NoArgsConstructor
 
 public class Accident {
+  private int status;
+  private String serial;
   private String accelerationX;
   private String accelerationY;
   private String accelerationZ;
   private String inclination;
   private String latitude;
   private String longitude;
-  private int status;
 }

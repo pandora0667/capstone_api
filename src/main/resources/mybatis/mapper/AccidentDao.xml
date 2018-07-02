@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.wisoft.capstone.dao.InterfaceAccidentDao">
+    <resultMap type="accident" id="AccidentResultMap">
+        <id column="serial" property="serial"/>
+        <result column="status" property="status"/>
+        <result column="accelerationX" property="accelerationX"/>
+        <result column="accelerationY" property="accelerationY"/>
+        <result column="accelerationZ" property="accelerationZ"/>
+        <result column="inclination" property="inclination"/>
+        <result column="latitude" property="latitude"/>
+        <result column="longitude" property="longitude"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="accident">
+        INSERT INTO accident VALUES (#{status}, #{accelerationX}, #{accelerationY}, #{accelerationZ}, #{inclination}, #{latitude}, #{longitude}, #{serial})
+    </insert>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.wisoft.capstone.dao.InterfaceRegularDao">
+    <resultMap type="regular" id="RegularResultMap">
+        <id column="serial" property="serial"/>
+        <result column="accelerationX" property="accelerationX"/>
+        <result column="accelerationY" property="accelerationY"/>
+        <result column="accelerationZ" property="accelerationZ"/>
+        <result column="inclination" property="inclination"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="regular">
+        INSERT INTO regular VALUES (#{accelerationX}, #{accelerationY}, #{accelerationZ}, #{inclination}, #{serial});
+    </insert>
+</mapper>

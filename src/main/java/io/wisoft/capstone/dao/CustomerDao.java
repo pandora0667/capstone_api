@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import java.util.List;
 
 public class CustomerDao implements InterfaceCustomerDao {
+
   private SqlSessionFactory sqlSessionFactory = DatabaseConnection.getInstance();
 
   @Override
@@ -20,9 +21,9 @@ public class CustomerDao implements InterfaceCustomerDao {
   }
 
   @Override
-  public int insert(Customer customer) {
+  public int insert(final Customer customer) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()){
-      int count = sqlSession.insert("io.wisoft.capstone.dao.InterfaceUserDao.insert", customer);
+      int count = sqlSession.insert("io.wisoft.capstone.dao.InterfaceCustomerDao.insert", customer);
       sqlSession.commit();
       return count;
     }

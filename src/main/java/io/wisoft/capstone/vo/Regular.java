@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 
 public class Regular {
+  private String serial;
   private String accelerationX;
   private String accelerationY;
   private String accelerationZ;
