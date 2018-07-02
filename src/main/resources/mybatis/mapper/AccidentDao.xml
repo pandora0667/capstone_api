@@ -15,7 +15,16 @@
     </resultMap>
 
     <insert id="insert" parameterType="accident">
-        INSERT INTO accident VALUES (#{status}, #{accelerationX}, #{accelerationY}, #{accelerationZ}, #{inclination}, #{latitude}, #{longitude}, #{serial})
+        INSERT INTO accident VALUES (#{status}, #{accelerationX}, #{accelerationY}, #{accelerationZ}, #{inclination},
+        #{latitude}, #{longitude}, #{serial})
     </insert>
+
+    <select id="selectList" parameterType="String" resultMap="AccidentResultMap">
+        SELECT * FROM accident WHERE serial = #{serial}
+    </select>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM accident WHERE serial = #{serial}
+    </delete>
 
 </mapper>

@@ -3,11 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.wisoft.capstone.dao.InterfaceCollectorDao">
-    <resultMap type="collector" id="DeviceResultMap">
+    <resultMap type="collector" id="collectorResultMap">
         <id column="licensePlate" property="licensePlate"/>
         <result column="serial" property="serial"/>
     </resultMap>
+
     <insert id="insert" parameterType="collector">
-        INSERT INTO collector VALUES (#{serial},  #{licensePlate})
+        INSERT INTO collector VALUES (#{serial}, #{licensePlate})
     </insert>
+
+    <select id="selectList" resultMap="collectorResultMap">
+        SELECT * FROM collector
+    </select>
+
+    <select id="selectCollectors" parameterType="String" resultMap="collectorResultMap">
+        SELECT * FROM collector WHERE licenseplate = #{licensePlate}
+    </select>
+    
+    <delete id="delete" parameterType="String">
+        DELETE FROM collector WHERE licenseplate = #{licensePlate}
+    </delete>
 </mapper>

@@ -5,8 +5,8 @@ import io.wisoft.capstone.vo.Collector;
 import java.util.List;
 
 public interface InterfaceCollectorDao {
-  List<Collector> selectAll();
-  List<Collector> select(final String id);
+  List<Collector> selectList();
+  List<Collector> selectCollectors(final String licensePlate);
   int insert(final Collector collector);
   int delete(final String id);
 }

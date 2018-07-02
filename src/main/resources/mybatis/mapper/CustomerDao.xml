@@ -15,4 +15,16 @@
     <insert id="insert" parameterType="customer">
         INSERT INTO customer VALUES (#{id}, #{password}, #{name}, #{email}, #{phone})
     </insert>
+
+    <select id="selectOne" parameterType="String" resultMap="CustomerResultMap">
+        SELECT * FROM customer WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="CustomerResultMap">
+        SELECT * FROM customer
+    </select>
+    
+    <delete id="delete" parameterType="String">
+        DELETE FROM customer WHERE id = #{id}
+    </delete>
 </mapper>

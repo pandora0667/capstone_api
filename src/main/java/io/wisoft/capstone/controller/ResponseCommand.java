@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 @SuppressWarnings("ALL")
 public class ResponseCommand {
+  // TODO GSON 변경
 
   protected String getOK() {
     JSONObject OK = new JSONObject();

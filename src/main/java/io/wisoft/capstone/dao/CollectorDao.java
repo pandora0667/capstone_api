@@ -9,26 +9,28 @@ import java.util.List;
 public class CollectorDao implements InterfaceCollectorDao {
   private SqlSessionFactory sqlSessionFactory = DatabaseConnection.getInstance();
 
-
-
   @Override
-  public List<Collector> selectAll() {
+  public List<Collector> selectList() {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectList("io.wisoft.capstone.dao.InterfaceCollectorDao.selectAll");
+      InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
+
+      return interfaceCollectorDao.selectList();
     }
   }
 
   @Override
-  public List<Collector> select(final String id) {
+  public List<Collector> selectCollectors(final String licensePlate) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectList("io.wisoft.capstone.dao.InterfaceCollectorDao.select", id);
+      InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
+      return interfaceCollectorDao.selectCollectors(licensePlate);
     }
   }
 
   @Override
   public int insert(final Collector collector) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      int count = sqlSession.insert("io.wisoft.capstone.dao.InterfaceCollectorDao.insert", collector);
+      InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
+      int count = interfaceCollectorDao.insert(collector);
       sqlSession.commit();
       return count;
     }
@@ -37,7 +39,8 @@ public class CollectorDao implements InterfaceCollectorDao {
   @Override
   public int delete(final String id) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      int count = sqlSession.delete("io.wisoft.capstone.dao.InterfaceCollectorDao.delete", id);
+      InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
+      int count = interfaceCollectorDao.delete(id);
       sqlSession.commit();
       return count;
     }

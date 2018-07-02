@@ -17,7 +17,6 @@ public class DatabaseConnection {
       try (final Reader reader = Resources.getResourceAsReader(MYBATIS_CONFIG_FILE)) {
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader, "development");
       } catch (IOException ignore) {}
-
       return sqlSessionFactory;
   }
 }

@@ -14,4 +14,12 @@
     <insert id="insert" parameterType="regular">
         INSERT INTO regular VALUES (#{accelerationX}, #{accelerationY}, #{accelerationZ}, #{inclination}, #{serial});
     </insert>
+
+    <select id="selectList" parameterType="String" resultMap="RegularResultMap">
+        SELECT * FROM regular WHERE serial = #{serial}
+    </select>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM regular WHERE serial = #{serial}
+    </delete>
 </mapper>

@@ -11,19 +11,28 @@ public class CustomerDao implements InterfaceCustomerDao {
   private SqlSessionFactory sqlSessionFactory = DatabaseConnection.getInstance();
 
   @Override
-  public List<Customer> selectAll() {
-    return null;
+  public List<Customer> selectList() {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
+
+      return interfaceCustomerDao.selectList();
+    }
   }
 
   @Override
   public Customer selectOne(String id) {
-    return null;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
+
+      return interfaceCustomerDao.selectOne(id);
+    }
   }
 
   @Override
   public int insert(final Customer customer) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()){
-      int count = sqlSession.insert("io.wisoft.capstone.dao.InterfaceCustomerDao.insert", customer);
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
+      int count = interfaceCustomerDao.insert(customer);
       sqlSession.commit();
       return count;
     }
@@ -31,11 +40,19 @@ public class CustomerDao implements InterfaceCustomerDao {
 
   @Override
   public int update(final Customer customer) {
-    return 0;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
+      return 0;
+    }
   }
 
   @Override
   public int delete(final String id) {
-    return 0;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
+      int count = interfaceCustomerDao.delete(id);
+      sqlSession.commit();
+      return count;
+    }
   }
 }

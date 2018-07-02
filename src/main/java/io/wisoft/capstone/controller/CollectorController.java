@@ -1,5 +1,6 @@
 package io.wisoft.capstone.controller;
 
+import com.google.gson.Gson;
 import io.wisoft.capstone.dao.CollectorDao;
 import io.wisoft.capstone.vo.Collector;
 
@@ -11,39 +12,29 @@ import java.util.List;
 @Path("/collectors")
 
 @Produces(MediaType.APPLICATION_JSON)
-public class CollectorController extends ResponseCommand{
+public class CollectorController extends ResponseCommand {
 
   //TODO 싱글톤
-  private static CollectorDao CollectorDao = new CollectorDao();
+  private static CollectorDao collectorDao = new CollectorDao();
+  private static Gson gson = new Gson();
 
   @GET
   public Response getCollectors() {
-    try {
-      List<Collector> collectors = CollectorDao.selectAll();
+    List<Collector> collectors = collectorDao.selectList();
+    String result = gson.toJson(collectors);
 
-      for (Collector collector : collectors) {
-        System.out.println(collector.getSerial());
-      }
-    } catch (Exception e) {
-      System.out.println("error : " + e);
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(getInternalServerError()).build();
-    }
-    return Response.status(Response.Status.OK).entity(getOK()).build();
+    return Response.status(Response.Status.OK).entity(result).build();
   }
 
   @GET
   @Path("{licensePlate}")
   public Response getCollector(final @PathParam("licensePlate")  String licensePlate) {
-    try {
-      List<Collector> collectors = CollectorDao.select(licensePlate);
-      for (Collector collector : collectors) {
-        System.out.println(collector);
-      }
-    } catch (Exception e) {
-      System.out.println("error : " + e);
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(getInternalServerError()).build();
-    }
-    return Response.status(Response.Status.OK).entity(getOK()).build();
+    System.out.println(licensePlate);
+
+    List<Collector> collectors = collectorDao.selectCollectors(licensePlate);
+    String result = gson.toJson(collectors);
+
+    return Response.status(Response.Status.OK).entity(result).build();
   }
 
   @POST
@@ -51,10 +42,10 @@ public class CollectorController extends ResponseCommand{
   public Response insertCollector(final Collector collector) {
     try {
       System.out.println(collector.toString());
-      System.out.println(CollectorDao.insert(collector));
+      System.out.println(collectorDao.insert(collector) + " 건의 사항이 처리되었습니다.");
     } catch (Exception e) {
       System.out.println("error : " + e);
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(getInternalServerError()).build();
+      return Response.status(Response.Status.FORBIDDEN).entity(getInternalServerError()).build();
     }
 
     return Response.status(Response.Status.CREATED).entity(getOK()).build();
@@ -63,12 +54,7 @@ public class CollectorController extends ResponseCommand{
   @DELETE
   @Path("{licensePlate}")
   public Response deleteCollector(final @PathParam("licensePlate") String licensePlate) {
-    try {
-      System.out.println(CollectorDao.delete(licensePlate));
-    } catch (Exception e) {
-      System.out.println("error : " + e);
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(getInternalServerError()).build();
-    }
+    System.out.println(collectorDao.delete(licensePlate));
 
     return Response.status(Response.Status.OK).entity(getOK()).build();
   }

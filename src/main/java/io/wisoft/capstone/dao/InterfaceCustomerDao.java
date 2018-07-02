@@ -5,7 +5,7 @@ import io.wisoft.capstone.vo.Customer;
 import java.util.List;
 
 public interface InterfaceCustomerDao {
-  List<Customer> selectAll();
+  List<Customer> selectList();
   Customer selectOne(final String id);
   int insert(final Customer customer);
   int update(final Customer customer);
