@@ -8,5 +8,6 @@ public interface InterfaceCollectorDao {
   List<Collector> selectList();
   List<Collector> selectCollectors(final String licensePlate);
   int insert(final Collector collector);
+  int update(final Collector collector);
   int delete(final String id);
 }

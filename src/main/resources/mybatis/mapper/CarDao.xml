@@ -4,17 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.wisoft.capstone.dao.InterfaceCarDao">
     <resultMap type="car" id="CarResultMap">
-        <id column="id" property="id"/>
+        <id column="customer_id" property="customer_id"/>
         <result column="kind" property="kind"/>
-        <result column="licensePlate" property="licensePlate"/>
+        <result column="license_plate" property="license_plate"/>
     </resultMap>
 
     <insert id="insert" parameterType="car">
-        INSERT INTO car VALUES (#{kind}, #{licensePlate}, #{id});
+        INSERT INTO car VALUES (#{kind}, #{license_plate}, #{customer_id});
     </insert>
 
     <select id="selectCars" parameterType="String" resultMap="CarResultMap">
-        SELECT * FROM car WHERE id = #{id}
+        SELECT * FROM car WHERE customer_id = #{customer_id}
     </select>
 
     <select id="selectList" resultMap="CarResultMap">
@@ -22,6 +22,6 @@
     </select>
 
     <delete id="delete" parameterType="String">
-        DELETE FROM car WHERE id = #{id}
+        DELETE FROM car WHERE customer_id = #{customer_id}
     </delete>
 </mapper>

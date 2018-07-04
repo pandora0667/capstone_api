@@ -29,7 +29,7 @@ public class CustomerController extends ResponseCommand {
   @Produces(MediaType.APPLICATION_JSON)
   public Response getCustomer(@PathParam("id") final String id) {
     Customer customer = customerDao.selectOne(id);
-    String result = gson.toJson(new Customer(customer.getId(), customer.getName(), customer.getEmail(),
+    String result = gson.toJson(new Customer(customer.getCustomer_id(), customer.getUsername(), customer.getEmail(),
         customer.getPhone(), customer.getPassword()));
 
     return Response.status(Response.Status.OK).entity(result).build();
@@ -49,11 +49,18 @@ public class CustomerController extends ResponseCommand {
     return Response.status(Response.Status.CREATED).entity(getOK()).build();
   }
 
-  // 수정 범위를 어디까지 할 것인가?
   @PUT
   @Path("{id}")
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response modifyCustomer(final @PathParam("id") String id) {
+  public Response modifyCustomer(final @PathParam("id") String id, final Customer customer) {
+
+    try {
+      System.out.println(customer.toString());
+      System.out.println(customerDao.update(customer) + " 건의 사항이 처리되었습니다.");
+    } catch (Exception e) {
+      System.out.println("Error : " + e);
+      return Response.status(Response.Status.FORBIDDEN).entity(getExist()).build();
+    }
     return Response.status(Response.Status.CREATED).entity(getOK()).build();
   }
 

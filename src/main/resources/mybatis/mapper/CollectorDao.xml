@@ -4,12 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.wisoft.capstone.dao.InterfaceCollectorDao">
     <resultMap type="collector" id="collectorResultMap">
-        <id column="licensePlate" property="licensePlate"/>
+        <id column="license_plate" property="license_plate"/>
         <result column="serial" property="serial"/>
     </resultMap>
 
     <insert id="insert" parameterType="collector">
-        INSERT INTO collector VALUES (#{serial}, #{licensePlate})
+        INSERT INTO collector VALUES (#{serial}, #{license_plate})
     </insert>
 
     <select id="selectList" resultMap="collectorResultMap">
@@ -17,10 +17,14 @@
     </select>
 
     <select id="selectCollectors" parameterType="String" resultMap="collectorResultMap">
-        SELECT * FROM collector WHERE licenseplate = #{licensePlate}
+        SELECT * FROM collector WHERE serial = #{serial}
     </select>
+
+    <update id="update" parameterType="collector">
+        UPDATE collector SET license_plate = #{license_plate} WHERE serial = #{serial}
+    </update>
     
     <delete id="delete" parameterType="String">
-        DELETE FROM collector WHERE licenseplate = #{licensePlate}
+        DELETE FROM collector WHERE serial = #{serial}
     </delete>
 </mapper>

@@ -10,6 +10,15 @@ public class CarDao implements InterfaceCarDao {
   private SqlSessionFactory sqlSessionFactory = DatabaseConnection.getInstance();
 
   @Override
+  public int insert(final Car car) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      InterfaceCarDao interfaceCarDao = sqlSession.getMapper(InterfaceCarDao.class);
+      int count = interfaceCarDao.insert(car);
+      sqlSession.commit();
+      return count;
+    }
+  }
+  @Override
   public List<Car> selectList() {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCarDao interfaceCarDao = sqlSession.getMapper(InterfaceCarDao.class);
@@ -27,15 +36,6 @@ public class CarDao implements InterfaceCarDao {
     }
   }
 
-  @Override
-  public int insert(final Car car) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      InterfaceCarDao interfaceCarDao = sqlSession.getMapper(InterfaceCarDao.class);
-      int count = interfaceCarDao.insert(car);
-      sqlSession.commit();
-      return count;
-    }
-  }
 
   @Override
   public int delete(String id) {

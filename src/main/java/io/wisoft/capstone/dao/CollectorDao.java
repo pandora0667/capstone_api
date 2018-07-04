@@ -19,10 +19,10 @@ public class CollectorDao implements InterfaceCollectorDao {
   }
 
   @Override
-  public List<Collector> selectCollectors(final String licensePlate) {
+  public List<Collector> selectCollectors(final String serial) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
-      return interfaceCollectorDao.selectCollectors(licensePlate);
+      return interfaceCollectorDao.selectCollectors(serial);
     }
   }
 
@@ -31,6 +31,16 @@ public class CollectorDao implements InterfaceCollectorDao {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
       int count = interfaceCollectorDao.insert(collector);
+      sqlSession.commit();
+      return count;
+    }
+  }
+
+  @Override
+  public int update(final Collector collector) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
+      int count = interfaceCollectorDao.update(collector);
       sqlSession.commit();
       return count;
     }

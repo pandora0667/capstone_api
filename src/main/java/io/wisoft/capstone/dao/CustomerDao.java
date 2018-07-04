@@ -42,7 +42,9 @@ public class CustomerDao implements InterfaceCustomerDao {
   public int update(final Customer customer) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
-      return 0;
+      int count = interfaceCustomerDao.update(customer);
+      sqlSession.commit();
+      return count;
     }
   }
 

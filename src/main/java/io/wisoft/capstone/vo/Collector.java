@@ -9,5 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 public class Collector {
   private String serial;
-  private String licensePlate;
+  private String license_plate;
 }

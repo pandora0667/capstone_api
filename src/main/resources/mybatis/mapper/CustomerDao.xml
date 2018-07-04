@@ -4,27 +4,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.wisoft.capstone.dao.InterfaceCustomerDao">
     <resultMap type="customer" id="CustomerResultMap">
-        <id column="id" property="id"/>
+        <id column="customer_id" property="customer_id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
-        <result column="name" property="name"/>
+        <result column="username" property="username"/>
         <result column="email" property="email"/>
         <result column="phone" property="phone"/>
     </resultMap>
 
     <insert id="insert" parameterType="customer">
-        INSERT INTO customer VALUES (#{id}, #{password}, #{name}, #{email}, #{phone})
+        INSERT INTO customer VALUES (#{customer_id}, #{password}, #{username}, #{email}, #{phone})
     </insert>
 
     <select id="selectOne" parameterType="String" resultMap="CustomerResultMap">
-        SELECT * FROM customer WHERE id = #{id}
+        SELECT * FROM customer WHERE customer_id = #{customer_id}
     </select>
 
     <select id="selectList" resultMap="CustomerResultMap">
         SELECT * FROM customer
     </select>
     
+    <update id="update" parameterType="customer">
+        UPDATE customer SET password = #{password}, username = #{username}, email = #{email}, phone = #{phone}
+        WHERE customer_id = #{customer_id}
+    </update>
+    
     <delete id="delete" parameterType="String">
-        DELETE FROM customer WHERE id = #{id}
+        DELETE FROM customer WHERE customer_id = #{customer_id}
     </delete>
 </mapper>

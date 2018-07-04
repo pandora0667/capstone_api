@@ -12,7 +12,7 @@ import java.util.List;
 @Path("/regulars")
 @Produces(MediaType.APPLICATION_JSON)
 
-public class RegularsController extends ResponseCommand {
+public class RegularController extends ResponseCommand {
 
   private static RegularDao regularDao = new RegularDao();
   private static Gson gson = new Gson();

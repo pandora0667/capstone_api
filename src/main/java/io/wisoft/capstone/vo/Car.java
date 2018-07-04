@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Car {
-  private String id;
+  private String customer_id;
   private String kind;
-  private String licensePlate;
+  private String license_plate;
 }

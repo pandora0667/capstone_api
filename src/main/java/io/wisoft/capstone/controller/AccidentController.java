@@ -12,7 +12,7 @@ import java.util.List;
 @Path("/accidents")
 @Produces(MediaType.APPLICATION_JSON)
 
-public class AccidentsController extends ResponseCommand {
+public class AccidentController extends ResponseCommand {
 
   private static AccidentDao accidentDao = new AccidentDao();
   private static Gson gson = new Gson();
