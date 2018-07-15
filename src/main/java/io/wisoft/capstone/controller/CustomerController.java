@@ -19,6 +19,11 @@ public class CustomerController extends ResponseCommand {
   @GET
   public Response getCustomers() {
     List<Customer> customers = customerDao.selectList();
+
+    if(customers.size() == 0) {
+      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+    }
+
     String result = gson.toJson(customers);
 
     return Response.status(Response.Status.OK).entity(result).build();

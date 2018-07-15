@@ -21,8 +21,12 @@ public class RegularController extends ResponseCommand {
   @Path("{serial}")
   public Response getRegulars(final @PathParam("serial") String serial) {
     List<Regular> regulars = regularDao.selectList(serial);
-    String result = gson.toJson(regulars);
 
+    if(regulars.size() == 0) {
+      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+    }
+
+    String result = gson.toJson(regulars);
     return Response.status(Response.Status.OK).entity(result).build();
   }
 

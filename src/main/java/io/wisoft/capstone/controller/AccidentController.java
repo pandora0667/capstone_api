@@ -21,6 +21,11 @@ public class AccidentController extends ResponseCommand {
   @Path("{serial}")
   public Response getAccidents(final @PathParam("serial") String serial) {
     List<Accident> accidents = accidentDao.selectList(serial);
+
+    if(accidents.size() == 0) {
+      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+    }
+
     String result = gson.toJson(accidents);
     return Response.status(Response.Status.OK).entity(result).build();
   }

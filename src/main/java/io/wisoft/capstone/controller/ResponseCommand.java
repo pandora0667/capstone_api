@@ -4,7 +4,6 @@ import org.json.JSONObject;
 
 @SuppressWarnings("ALL")
 public class ResponseCommand {
-  // TODO GSON 변경
 
   protected String getOK() {
     JSONObject OK = new JSONObject();
@@ -41,6 +40,14 @@ public class ResponseCommand {
     JSONObject removed = new JSONObject();
     removed.put("result", "no");
     removed.put("description", "서버내부에 에러가 발생했습니다.");
+
+    return removed.toString();
+  }
+
+  protected String getForbbind() {
+    JSONObject removed = new JSONObject();
+    removed.put("result", "no");
+    removed.put("description", "요청을 처리할 수 없습니다.");
 
     return removed.toString();
   }

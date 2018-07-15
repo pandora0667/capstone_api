@@ -18,8 +18,12 @@ public class CarController extends ResponseCommand {
   @GET
   public Response getCars() {
     List<Car> cars = carDao.selectList();
-    String result = gson.toJson(cars);
 
+    if(cars.size() == 0) {
+      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+    }
+
+    String result = gson.toJson(cars);
     return Response.status(Response.Status.OK).entity(result).build();
   }
 
@@ -27,8 +31,12 @@ public class CarController extends ResponseCommand {
   @Path("{id}")
   public Response getCar(final @PathParam("id") String id) {
     List<Car> cars = carDao.selectCars(id);
-    String result = gson.toJson(cars);
 
+    if(cars.size() == 0) {
+      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+    }
+
+    String result = gson.toJson(cars);
     return Response.status(Response.Status.OK).entity(result).build();
   }
 
@@ -48,7 +56,12 @@ public class CarController extends ResponseCommand {
   @DELETE
   @Path("{id}")
   public Response deleteCar(final @PathParam("id") String id) {
-    System.out.println(carDao.delete(id) + " 건의 사항이 처리되었습니다.");
+    try {
+      System.out.println(carDao.delete(id) + " 건의 사항이 처리되었습니다.");
+    } catch (Exception e) {
+      System.out.println("Error : "  + e);
+      return Response.status(Response.Status.FORBIDDEN).entity(getForbbind()).build();
+    }
 
     return Response.status(Response.Status.OK).entity(getOK()).build();
   }
