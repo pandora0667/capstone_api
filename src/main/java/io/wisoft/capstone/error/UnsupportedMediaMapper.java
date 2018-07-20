@@ -10,7 +10,8 @@ import javax.ws.rs.ext.Provider;
 public class UnsupportedMediaMapper extends ErrorCommand implements ExceptionMapper<UnsupportedMediaException> {
 
   @Override
-  public Response toResponse(UnsupportedMediaException exception) {
+  public Response toResponse(final UnsupportedMediaException exception) {
+    System.out.println(exception.getMessage());
     return Response.status(Response.Status.NOT_FOUND)
         .entity(error(UNSUPPORTED_MEDIA))
         .build();

@@ -9,7 +9,8 @@ import javax.ws.rs.ext.Provider;
 public class NotFoundExceptionMapper extends ErrorCommand implements ExceptionMapper<NotFoundException> {
 
   @Override
-  public Response toResponse(NotFoundException exception) {
+  public Response toResponse(final NotFoundException exception) {
+    System.out.println(exception.getMessage());
     return Response.status(Response.Status.NOT_FOUND)
         .entity(error(NOT_FOUND))
         .build();

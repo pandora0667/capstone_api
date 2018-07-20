@@ -9,7 +9,8 @@ import javax.ws.rs.ext.Provider;
 public class MethodNotAllowedMapper extends ErrorCommand implements ExceptionMapper<NotAllowedException> {
 
   @Override
-  public Response toResponse(NotAllowedException exception) {
+  public Response toResponse(final NotAllowedException exception) {
+    System.out.println(exception.getMessage());
     return Response.status(Response.Status.NOT_FOUND)
         .entity(error(METHOD_NOT_ALLOWED))
         .build();

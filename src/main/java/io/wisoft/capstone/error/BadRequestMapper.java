@@ -9,7 +9,8 @@ import javax.ws.rs.ext.Provider;
 public class BadRequestMapper extends ErrorCommand implements ExceptionMapper<BadRequestException> {
 
   @Override
-  public Response toResponse(BadRequestException exception) {
+  public Response toResponse(final BadRequestException exception) {
+    System.out.println(exception.getMessage());
     return Response.status(Response.Status.NOT_FOUND)
         .entity(error(BAD_REQUEST))
         .build();
