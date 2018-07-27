@@ -3,6 +3,8 @@ package io.wisoft.capstone.controller;
 import com.google.gson.Gson;
 import io.wisoft.capstone.dao.CustomerDao;
 import io.wisoft.capstone.vo.Customer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,14 +15,18 @@ import java.util.List;
 @Path("/customers")
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerController extends ResponseCommand {
+  private Logger logger = LoggerFactory.getLogger(CustomerController.class);
+
   private static CustomerDao customerDao = new CustomerDao();
   private static Gson gson = new Gson();
 
   @GET
   public Response getCustomers() {
     List<Customer> customers = customerDao.selectList();
+    logger.info("GET request to customers/ controller");
 
-    if(customers.size() == 0) {
+    if(customers.isEmpty()) {
+      logger.warn("customers No results found.");
       return Response.status(Response.Status.OK).entity(getNoContent()).build();
     }
 
@@ -33,9 +39,9 @@ public class CustomerController extends ResponseCommand {
   @Path("{id}")
   @Produces(MediaType.APPLICATION_JSON)
   public Response getCustomer(@PathParam("id") final String id) {
+    logger.info("GET request to customers/{} controller", id);
     Customer customer = customerDao.selectOne(id);
-    String result = gson.toJson(new Customer(customer.getCustomer_id(), customer.getUsername(), customer.getEmail(),
-        customer.getPhone(), customer.getPassword()));
+    String result = gson.toJson(customer);
 
     return Response.status(Response.Status.OK).entity(result).build();
   }
@@ -45,10 +51,10 @@ public class CustomerController extends ResponseCommand {
   public Response registerCustomer(final Customer customer) {
 
     try {
-      System.out.println(customer.toString());
-      System.out.println(customerDao.insert(customer) + " 건의 사항이 처리되었습니다.");
-    } catch (Exception e) {
-      System.out.println("Error : " + e);
+      logger.info(customer.toString());
+      logger.info("{} 건의 사항이 처리되었습니다.", customerDao.insert(customer));
+    } catch (final Exception e) {
+      logger.error("Error : ",  e);
       return Response.status(Response.Status.FORBIDDEN).entity(getExist()).build();
     }
     return Response.status(Response.Status.CREATED).entity(getOK()).build();
@@ -60,10 +66,10 @@ public class CustomerController extends ResponseCommand {
   public Response modifyCustomer(final @PathParam("id") String id, final Customer customer) {
 
     try {
-      System.out.println(customer.toString());
-      System.out.println(customerDao.update(customer) + " 건의 사항이 처리되었습니다.");
-    } catch (Exception e) {
-      System.out.println("Error : " + e);
+      logger.info(customer.toString());
+      logger.info("{} 건의 사항이 처리되었습니다.", customerDao.update(customer));
+    } catch (final Exception e) {
+      logger.error("Error : " , e);
       return Response.status(Response.Status.FORBIDDEN).entity(getExist()).build();
     }
     return Response.status(Response.Status.CREATED).entity(getOK()).build();
@@ -72,7 +78,12 @@ public class CustomerController extends ResponseCommand {
   @DELETE
   @Path("{id}")
   public Response deleteCustomer(final @PathParam("id") String id) {
-    System.out.println(customerDao.delete(id) + " 건의 사항이 처리되었습니다.");
+    try {
+      logger.info("{} 건의 사항이 처리되었습니다.", customerDao.delete(id));
+    } catch (final Exception e) {
+      logger.error("Error : ", e);
+      return Response.status(Response.Status.FORBIDDEN).entity(getForbbind()).build();
+    }
 
     return Response.status(Response.Status.OK).entity(getOK()).build();
   }

@@ -3,6 +3,8 @@ package io.wisoft.capstone.controller;
 import com.google.gson.Gson;
 import io.wisoft.capstone.dao.RegularDao;
 import io.wisoft.capstone.vo.Regular;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,6 +15,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 
 public class RegularController extends ResponseCommand {
+  private Logger logger = LoggerFactory.getLogger(RegularController.class);
 
   private static RegularDao regularDao = new RegularDao();
   private static Gson gson = new Gson();
@@ -21,8 +24,10 @@ public class RegularController extends ResponseCommand {
   @Path("{serial}")
   public Response getRegulars(final @PathParam("serial") String serial) {
     List<Regular> regulars = regularDao.selectList(serial);
+    logger.info("GET request to regulars/{} controller", serial);
 
-    if(regulars.size() == 0) {
+    if(regulars.isEmpty()) {
+      logger.warn("There is no regular information in the serial information you viewed.");
       return Response.status(Response.Status.OK).entity(getNoContent()).build();
     }
 
@@ -34,11 +39,11 @@ public class RegularController extends ResponseCommand {
   @Consumes(MediaType.APPLICATION_JSON)
   public Response insertRegular(final Regular regular) {
     try {
-      System.out.println(regular.toString());
-      System.out.println(regularDao.insert(regular) + " 건의 사항이 처리되었습니다.");
+      logger.info(regular.toString());
+      logger.info("{} 건의 사항이 처리되었습니다.", regularDao.insert(regular));
 
-    } catch (Exception e) {
-      System.out.println("Error : " + e);
+    } catch (final Exception e) {
+      logger.error("Error : ", e);
       return Response.status(Response.Status.FORBIDDEN).entity(getExist()).build();
     }
 
@@ -49,8 +54,11 @@ public class RegularController extends ResponseCommand {
   @Path("{serial}")
   public Response deleteRegular(final @PathParam("serial") String serial) {
     try {
-      System.out.println(regularDao.delete(serial) + " 건의 사항이 처리되었습니다.");
-    } catch (Exception ignore) {}
+      logger.info("{} 건의 사항이 처리되었습니다.", regularDao.delete(serial));
+    } catch (final Exception e) {
+      logger.error("Error : ", e);
+      return Response.status(Response.Status.FORBIDDEN).entity(getForbbind()).build();
+    }
     return Response.status(Response.Status.CREATED).entity(getOK()).build();
   }
 }

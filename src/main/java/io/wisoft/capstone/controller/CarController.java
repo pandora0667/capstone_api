@@ -3,6 +3,9 @@ package io.wisoft.capstone.controller;
 import com.google.gson.Gson;
 import io.wisoft.capstone.dao.CarDao;
 import io.wisoft.capstone.vo.Car;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,17 +15,20 @@ import java.util.List;
 @Path("/cars")
 @Produces(MediaType.APPLICATION_JSON)
 public class CarController extends ResponseCommand {
+  private Logger logger = LoggerFactory.getLogger(CarController.class);
+
   private static CarDao carDao = new CarDao();
   private static Gson gson = new Gson();
 
   @GET
   public Response getCars() {
     List<Car> cars = carDao.selectList();
+    logger.info("GET request to cars/ controller");
 
-    if(cars.size() == 0) {
+    if(cars.isEmpty()) {
+      logger.warn("The registered car information does not exist.");
       return Response.status(Response.Status.OK).entity(getNoContent()).build();
     }
-
     String result = gson.toJson(cars);
     return Response.status(Response.Status.OK).entity(result).build();
   }
@@ -30,12 +36,13 @@ public class CarController extends ResponseCommand {
   @GET
   @Path("{id}")
   public Response getCar(final @PathParam("id") String id) {
+    logger.info("GET request to cars/{} controller", id);
     List<Car> cars = carDao.selectCars(id);
 
-    if(cars.size() == 0) {
+    if(cars.isEmpty()) {
+      logger.warn("The registered car information does not exist.");
       return Response.status(Response.Status.OK).entity(getNoContent()).build();
     }
-
     String result = gson.toJson(cars);
     return Response.status(Response.Status.OK).entity(result).build();
   }
@@ -44,10 +51,10 @@ public class CarController extends ResponseCommand {
   @Consumes(MediaType.APPLICATION_JSON)
   public Response registerCar(final Car car) {
     try {
-      System.out.println(car.toString());
-      System.out.println(carDao.insert(car) + " 건의 사항이 처리되었습니다.");
-    } catch (Exception e) {
-      System.out.println("Error : " + e);
+      logger.info(car.toString());
+      logger.info("{} 건의 사항이 처리되었습니다.", carDao.insert(car));
+    } catch (final Exception e) {
+      logger.error("Error : ",  e);
       return Response.status(Response.Status.FORBIDDEN).entity(getExist()).build();
     }
     return Response.status(Response.Status.CREATED).entity(getOK()).build();
@@ -57,9 +64,9 @@ public class CarController extends ResponseCommand {
   @Path("{id}")
   public Response deleteCar(final @PathParam("id") String id) {
     try {
-      System.out.println(carDao.delete(id) + " 건의 사항이 처리되었습니다.");
-    } catch (Exception e) {
-      System.out.println("Error : "  + e);
+      logger.info("{} 건의 사항이 처리되었습니다.", carDao.delete(id));
+    } catch (final Exception e) {
+      logger.error("Error : " , e);
       return Response.status(Response.Status.FORBIDDEN).entity(getForbbind()).build();
     }
 

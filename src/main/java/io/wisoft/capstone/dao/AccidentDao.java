@@ -4,6 +4,7 @@ import io.wisoft.capstone.vo.Accident;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+
 import java.util.List;
 
 public class AccidentDao implements InterfaceAccidentDao {
@@ -22,9 +23,9 @@ public class AccidentDao implements InterfaceAccidentDao {
   public int insert(final Accident accident) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceAccidentDao interfaceAccidentDao = sqlSession.getMapper(InterfaceAccidentDao.class);
-      int count = interfaceAccidentDao.insert(accident);
+      int retValue = interfaceAccidentDao.insert(accident);
       sqlSession.commit();
-      return count;
+      return retValue;
     }
   }
 
@@ -32,10 +33,10 @@ public class AccidentDao implements InterfaceAccidentDao {
   public int delete(final String serial) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceAccidentDao interfaceAccidentDao = sqlSession.getMapper(InterfaceAccidentDao.class);
-      int count = interfaceAccidentDao.delete(serial);
+      int retValue = interfaceAccidentDao.delete(serial);
       sqlSession.commit();
 
-      return count;
+      return retValue;
     }
   }
 }
