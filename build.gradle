@@ -1,11 +1,17 @@
 plugins {
     id 'java'
     id 'war'
+    id 'idea'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version "2.0.4"
 }
 
 group 'wisoft'
+version '2018.30.0'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 10
+targetCompatibility = 10
+mainClassName = 'io.wisoft.capstone.Initialization'
 
 ext {
     slf4jVersion = '1.7.25'
@@ -18,10 +24,6 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile "org.glassfish.jersey.core:jersey-server:2.25.1"
-    compile "org.glassfish.jersey.containers:jersey-container-servlet-core:2.25.1"
-    compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.25.1'
-    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     compile 'org.json:json:20180130'
     compile 'org.mybatis:mybatis:3.4.6'
     compile 'org.postgresql:postgresql:42.2.2.jre7'

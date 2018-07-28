@@ -1,10 +1,13 @@
 package io.wisoft.capstone.vo;
 
-import lombok.*;
 
+import lombok.ToString;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 
 @ToString
-
 
 public class Customer {
   private String customer_id;
