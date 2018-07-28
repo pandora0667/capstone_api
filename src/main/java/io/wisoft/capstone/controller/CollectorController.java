@@ -37,7 +37,7 @@ public class CollectorController extends ResponseCommand {
   @Path("{serial}")
   public Response getCollector(final @PathParam("serial")  String serial) {
     List<Collector> collectors = collectorDao.selectCollectors(serial);
-    logger.info("Access to collectors/{serial} controller");
+    logger.info("Access to collectors/{} controller", serial);
 
     if (collectors.isEmpty()) {
       logger.warn("There is no collector for the serial you viewed.");
