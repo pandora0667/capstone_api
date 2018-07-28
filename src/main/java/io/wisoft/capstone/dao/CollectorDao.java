@@ -30,9 +30,9 @@ public class CollectorDao implements InterfaceCollectorDao {
   public int insert(final Collector collector) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
-      int count = interfaceCollectorDao.insert(collector);
+      int retValue = interfaceCollectorDao.insert(collector);
       sqlSession.commit();
-      return count;
+      return retValue;
     }
   }
 
@@ -40,9 +40,9 @@ public class CollectorDao implements InterfaceCollectorDao {
   public int update(final Collector collector) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
-      int count = interfaceCollectorDao.update(collector);
+      int retValue = interfaceCollectorDao.update(collector);
       sqlSession.commit();
-      return count;
+      return retValue;
     }
   }
 
@@ -50,9 +50,9 @@ public class CollectorDao implements InterfaceCollectorDao {
   public int delete(final String id) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCollectorDao interfaceCollectorDao = sqlSession.getMapper(InterfaceCollectorDao.class);
-      int count = interfaceCollectorDao.delete(id);
+      int retValue = interfaceCollectorDao.delete(id);
       sqlSession.commit();
-      return count;
+      return retValue;
     }
   }
 }

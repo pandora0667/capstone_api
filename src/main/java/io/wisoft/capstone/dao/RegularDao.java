@@ -22,9 +22,9 @@ public class RegularDao implements InterfaceRegularDao {
   public int insert(final Regular regular) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceRegularDao interfaceRegularDao = sqlSession.getMapper(InterfaceRegularDao.class);
-      int count = interfaceRegularDao.insert(regular);
+      int retValue = interfaceRegularDao.insert(regular);
       sqlSession.commit();
-      return count;
+      return retValue;
     }
   }
 
@@ -32,10 +32,10 @@ public class RegularDao implements InterfaceRegularDao {
   public int delete(final String serial) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceRegularDao interfaceRegularDao = sqlSession.getMapper(InterfaceRegularDao.class);
-      int count = interfaceRegularDao.delete(serial);
+      int retValue = interfaceRegularDao.delete(serial);
       sqlSession.commit();
 
-      return count;
+      return retValue;
     }
   }
 }

@@ -32,9 +32,9 @@ public class CustomerDao implements InterfaceCustomerDao {
   public int insert(final Customer customer) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
-      int count = interfaceCustomerDao.insert(customer);
+      int retValue = interfaceCustomerDao.insert(customer);
       sqlSession.commit();
-      return count;
+      return retValue;
     }
   }
 
@@ -42,9 +42,9 @@ public class CustomerDao implements InterfaceCustomerDao {
   public int update(final Customer customer) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
-      int count = interfaceCustomerDao.update(customer);
+      int retValue = interfaceCustomerDao.update(customer);
       sqlSession.commit();
-      return count;
+      return retValue;
     }
   }
 
@@ -52,9 +52,9 @@ public class CustomerDao implements InterfaceCustomerDao {
   public int delete(final String id) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       InterfaceCustomerDao interfaceCustomerDao = sqlSession.getMapper(InterfaceCustomerDao.class);
-      int count = interfaceCustomerDao.delete(id);
+      int retValue = interfaceCustomerDao.delete(id);
       sqlSession.commit();
-      return count;
+      return retValue;
     }
   }
 }
