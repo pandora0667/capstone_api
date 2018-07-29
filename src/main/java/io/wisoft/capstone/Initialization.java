@@ -26,9 +26,9 @@ public class Initialization {
     servletHolder.setInitParameter("jersey.config.server.provider.packages", "io.wisoft.capstone.controller");
 
     try {
+      logger.info("2018 Capstone server is running on port 8080.");
       server.start();
       server.join();
-      logger.info("2018 Capstone server is running on port 8080.");
     } catch (final Exception e) {
       logger.error("Error : " , e);
     } finally {

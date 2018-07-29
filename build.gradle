@@ -16,7 +16,8 @@ mainClassName = 'io.wisoft.capstone.Initialization'
 ext {
     slf4jVersion = '1.7.25'
     jettyVersion = '9.4.8.v20180619'
-    jerseyVersion = '2.27'}
+    jerseyVersion = '2.27'
+}
 
 repositories {
     mavenCentral()

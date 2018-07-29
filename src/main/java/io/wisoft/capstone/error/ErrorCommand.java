@@ -21,6 +21,8 @@ public class ErrorCommand {
     String response = null;
 
     switch (select) {
+      default:
+        break;
       case BAD_REQUEST:
         response = getBadRequest();
         break;
