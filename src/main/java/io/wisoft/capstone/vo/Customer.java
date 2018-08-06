@@ -10,37 +10,37 @@ import javax.xml.bind.annotation.XmlRootElement;
 @ToString
 
 public class Customer {
-  private String customer_id;
+  private String customerId;
   private String username;
   private String email;
   private String phone;
   private String password;
 
   public Customer() {
-
   }
 
-  public Customer(String customer_id, String username, String email, String phone, String password) {
-    this.customer_id = customer_id;
+  public Customer(final String customerId, final String username, final String email,
+                  final String phone, final String password) {
+    this.customerId = customerId;
     this.username = username;
     this.email = email;
     this.phone = phone;
     this.password = password;
   }
 
-  public String getCustomer_id() {
-    return customer_id;
+  public String getCustomerId() {
+    return customerId;
   }
 
-  public void setCustomer_id(String customer_id) {
-    this.customer_id = customer_id;
+  public void setCustomerId(final String customerId) {
+    this.customerId = customerId;
   }
 
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(final String username) {
     this.username = username;
   }
 
@@ -48,7 +48,7 @@ public class Customer {
     return email;
   }
 
-  public void setEmail(String email) {
+  public void setEmail(final String email) {
     this.email = email;
   }
 
@@ -56,7 +56,7 @@ public class Customer {
     return phone;
   }
 
-  public void setPhone(String phone) {
+  public void setPhone(final String phone) {
     this.phone = phone;
   }
 
@@ -64,7 +64,7 @@ public class Customer {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(final String password) {
     this.password = password;
   }
 }

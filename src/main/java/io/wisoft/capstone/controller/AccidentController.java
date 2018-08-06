@@ -11,9 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-// 임베디드 제티 변경
-// 데이터 수집기에 따른 데이터베이스 변경
-// 스네이크 표기법 카멜 표기법 변경
+// 수집기에 따른 데이터베이스 변경
 
 @Path("/accidents")
 @Produces(MediaType.APPLICATION_JSON)

@@ -10,30 +10,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 public class Collector {
   private String serial;
-  private String license_plate;
+  private String licensePlate;
 
   public Collector() {
 
   }
 
-  public Collector(String serial, String license_plate) {
+  public Collector(final String serial, final String licensePlate) {
     this.serial = serial;
-    this.license_plate = license_plate;
+    this.licensePlate = licensePlate;
   }
 
   public String getSerial() {
     return serial;
   }
 
-  public void setSerial(String serial) {
+  public void setSerial(final String serial) {
     this.serial = serial;
   }
 
-  public String getLicense_plate() {
-    return license_plate;
+  public String getLicensePlate() {
+    return licensePlate;
   }
 
-  public void setLicense_plate(String license_plate) {
-    this.license_plate = license_plate;
+  public void setLicensePlate(final String licensePlate) {
+    this.licensePlate = licensePlate;
   }
 }

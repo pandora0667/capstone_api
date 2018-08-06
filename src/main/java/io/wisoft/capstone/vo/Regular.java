@@ -20,7 +20,8 @@ public class Regular {
 
   }
 
-  public Regular(String serial, String accelerationX, String accelerationY, String accelerationZ, String inclination) {
+  public Regular(final String serial, final String accelerationX, final String accelerationY,
+                 final String accelerationZ, final String inclination) {
     this.serial = serial;
     this.accelerationX = accelerationX;
     this.accelerationY = accelerationY;
@@ -32,7 +33,7 @@ public class Regular {
     return serial;
   }
 
-  public void setSerial(String serial) {
+  public void setSerial(final String serial) {
     this.serial = serial;
   }
 
@@ -40,7 +41,7 @@ public class Regular {
     return accelerationX;
   }
 
-  public void setAccelerationX(String accelerationX) {
+  public void setAccelerationX(final String accelerationX) {
     this.accelerationX = accelerationX;
   }
 
@@ -48,7 +49,7 @@ public class Regular {
     return accelerationY;
   }
 
-  public void setAccelerationY(String accelerationY) {
+  public void setAccelerationY(final String accelerationY) {
     this.accelerationY = accelerationY;
   }
 
@@ -56,7 +57,7 @@ public class Regular {
     return accelerationZ;
   }
 
-  public void setAccelerationZ(String accelerationZ) {
+  public void setAccelerationZ(final String accelerationZ) {
     this.accelerationZ = accelerationZ;
   }
 
@@ -64,7 +65,7 @@ public class Regular {
     return inclination;
   }
 
-  public void setInclination(String inclination) {
+  public void setInclination(final String inclination) {
     this.inclination = inclination;
   }
 }

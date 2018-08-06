@@ -22,7 +22,8 @@ public class Accident {
 
   }
 
-  public Accident(int status, String serial, String accelerationX, String accelerationY, String accelerationZ, String inclination, String latitude, String longitude) {
+  public Accident(final int status, final String serial, final String accelerationX, final String accelerationY,
+                  final String accelerationZ, final String inclination, final String latitude, final String longitude) {
     this.status = status;
     this.serial = serial;
     this.accelerationX = accelerationX;
@@ -37,7 +38,7 @@ public class Accident {
     return status;
   }
 
-  public void setStatus(int status) {
+  public void setStatus(final int status) {
     this.status = status;
   }
 
@@ -45,7 +46,7 @@ public class Accident {
     return serial;
   }
 
-  public void setSerial(String serial) {
+  public void setSerial(final String serial) {
     this.serial = serial;
   }
 
@@ -53,7 +54,7 @@ public class Accident {
     return accelerationX;
   }
 
-  public void setAccelerationX(String accelerationX) {
+  public void setAccelerationX(final String accelerationX) {
     this.accelerationX = accelerationX;
   }
 
@@ -61,7 +62,7 @@ public class Accident {
     return accelerationY;
   }
 
-  public void setAccelerationY(String accelerationY) {
+  public void setAccelerationY(final String accelerationY) {
     this.accelerationY = accelerationY;
   }
 
@@ -69,7 +70,7 @@ public class Accident {
     return accelerationZ;
   }
 
-  public void setAccelerationZ(String accelerationZ) {
+  public void setAccelerationZ(final String accelerationZ) {
     this.accelerationZ = accelerationZ;
   }
 
@@ -77,7 +78,7 @@ public class Accident {
     return inclination;
   }
 
-  public void setInclination(String inclination) {
+  public void setInclination(final String inclination) {
     this.inclination = inclination;
   }
 
@@ -85,7 +86,7 @@ public class Accident {
     return latitude;
   }
 
-  public void setLatitude(String latitude) {
+  public void setLatitude(final String latitude) {
     this.latitude = latitude;
   }
 
@@ -93,7 +94,7 @@ public class Accident {
     return longitude;
   }
 
-  public void setLongitude(String longitude) {
+  public void setLongitude(final String longitude) {
     this.longitude = longitude;
   }
 }

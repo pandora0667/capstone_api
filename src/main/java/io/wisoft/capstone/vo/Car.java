@@ -9,41 +9,41 @@ import javax.xml.bind.annotation.XmlRootElement;
 @ToString
 
 public class Car {
-  private String customer_id;
+  private String customerId;
   private String kind;
-  private String license_plate;
+  private String licensePlate;
 
   public Car() {
 
   }
 
-  public Car(String customer_id, String kind, String license_plate) {
-    this.customer_id = customer_id;
+  public Car(final String customerId, final String kind, final String licensePlate) {
+    this.customerId = customerId;
     this.kind = kind;
-    this.license_plate = license_plate;
+    this.licensePlate = licensePlate;
   }
 
-  public String getCustomer_id() {
-    return customer_id;
+  public String getCustomerId() {
+    return customerId;
   }
 
-  public void setCustomer_id(String customer_id) {
-    this.customer_id = customer_id;
+  public void setCustomerId(final String customerId) {
+    this.customerId = customerId;
   }
 
   public String getKind() {
     return kind;
   }
 
-  public void setKind(String kind) {
+  public void setKind(final String kind) {
     this.kind = kind;
   }
 
-  public String getLicense_plate() {
-    return license_plate;
+  public String getLicensePlate() {
+    return licensePlate;
   }
 
-  public void setLicense_plate(String license_plate) {
-    this.license_plate = license_plate;
+  public void setLicensePlate(final String licensePlate) {
+    this.licensePlate = licensePlate;
   }
 }
