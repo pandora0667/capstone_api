@@ -13,6 +13,9 @@ sourceCompatibility = 10
 targetCompatibility = 10
 mainClassName = 'io.wisoft.capstone.Initialization'
 
+shadowJar {
+}
+
 ext {
     slf4jVersion = '1.7.25'
     jettyVersion = '9.4.8.v20180619'

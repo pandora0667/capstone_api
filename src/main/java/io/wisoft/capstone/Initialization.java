@@ -34,6 +34,5 @@ public class Initialization {
     } finally {
       server.destroy();
     }
-
   }
 }
