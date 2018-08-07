@@ -6,8 +6,6 @@ import org.slf4j.LoggerFactory;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-// TODO 예외 발생시 로직상 처리방안 고안
-
 public class Security {
   private final Logger logger = LoggerFactory.getLogger(Security.class);
 
@@ -16,13 +14,13 @@ public class Security {
       MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
       messageDigest.update(password.getBytes());
       byte byteData[] = messageDigest.digest();
-      StringBuffer buffer = new StringBuffer();
+      StringBuilder buffer = new StringBuilder();
 
       for (byte data : byteData) {
         buffer.append(Integer.toString(data & 0xff + 0x100, 16).substring(1));
       }
       return buffer.toString();
-    } catch (NoSuchAlgorithmException e) {
+    } catch (final NoSuchAlgorithmException e) {
       logger.error("Error :" , e);
       return null;
     }
