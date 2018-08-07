@@ -11,17 +11,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-// 수집기에 따른 데이터베이스 변경
 
 @Path("/accidents")
 @Produces(MediaType.APPLICATION_JSON)
-
 public class AccidentController extends ResponseCommand {
   private Logger logger =  LoggerFactory.getLogger(AccidentController.class);
 
   private static AccidentDao accidentDao = new AccidentDao();
   private static Gson gson = new Gson();
 
+  // TODO 메소드 이름 혹은 변수 이름 변경 (확실하지 않음)
   @GET
   @Path("{serial}")
   public Response getAccidents(final @PathParam("serial") String serial) {
@@ -30,7 +29,7 @@ public class AccidentController extends ResponseCommand {
 
     if(accidents.isEmpty()) {
       logger.warn("accidents No information is available.");
-      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+      return Response.status(Response.Status.NO_CONTENT).entity(getNoContent()).build();
     }
 
     String result = gson.toJson(accidents);
@@ -58,6 +57,6 @@ public class AccidentController extends ResponseCommand {
     } catch (final Exception e) {
       logger.error("Error : ", e);
     }
-    return Response.status(Response.Status.CREATED).entity(getOK()).build();
+    return Response.status(Response.Status.NO_CONTENT).entity(getOK()).build();
   }
 }

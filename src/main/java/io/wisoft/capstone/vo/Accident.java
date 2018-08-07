@@ -1,13 +1,11 @@
 package io.wisoft.capstone.vo;
 
 import lombok.*;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-
 @ToString
-
+// TODO status enum 으로 자료형 변경
 public class Accident {
   private int status;
   private String serial;

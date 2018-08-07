@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+// TODO AES 적용
 public class Security {
   private final Logger logger = LoggerFactory.getLogger(Security.class);
 

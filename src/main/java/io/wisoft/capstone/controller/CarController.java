@@ -6,7 +6,6 @@ import io.wisoft.capstone.vo.Car;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -27,7 +26,7 @@ public class CarController extends ResponseCommand {
 
     if(cars.isEmpty()) {
       logger.warn("The registered car information does not exist.");
-      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+      return Response.status(Response.Status.FORBIDDEN).entity(getNoContent()).build();
     }
     String result = gson.toJson(cars);
     return Response.status(Response.Status.OK).entity(result).build();
@@ -41,7 +40,7 @@ public class CarController extends ResponseCommand {
 
     if(cars.isEmpty()) {
       logger.warn("The registered car information does not exist.");
-      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+      return Response.status(Response.Status.FORBIDDEN).entity(getNoContent()).build();
     }
     String result = gson.toJson(cars);
     return Response.status(Response.Status.OK).entity(result).build();
@@ -70,6 +69,6 @@ public class CarController extends ResponseCommand {
       return Response.status(Response.Status.FORBIDDEN).entity(getForbbind()).build();
     }
 
-    return Response.status(Response.Status.OK).entity(getOK()).build();
+    return Response.status(Response.Status.NO_CONTENT).entity(getOK()).build();
   }
 }

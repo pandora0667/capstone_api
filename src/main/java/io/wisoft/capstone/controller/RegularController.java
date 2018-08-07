@@ -13,7 +13,6 @@ import java.util.List;
 
 @Path("/regulars")
 @Produces(MediaType.APPLICATION_JSON)
-
 public class RegularController extends ResponseCommand {
   private Logger logger = LoggerFactory.getLogger(RegularController.class);
 
@@ -28,7 +27,7 @@ public class RegularController extends ResponseCommand {
 
     if(regulars.isEmpty()) {
       logger.warn("There is no regular information in the serial information you viewed.");
-      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+      return Response.status(Response.Status.NO_CONTENT).entity(getNoContent()).build();
     }
 
     String result = gson.toJson(regulars);
@@ -41,7 +40,6 @@ public class RegularController extends ResponseCommand {
     try {
       logger.info(regular.toString());
       logger.info("{} 건의 사항이 처리되었습니다.", regularDao.insert(regular));
-
     } catch (final Exception e) {
       logger.error("Error : ", e);
       return Response.status(Response.Status.FORBIDDEN).entity(getExist()).build();
@@ -59,6 +57,7 @@ public class RegularController extends ResponseCommand {
       logger.error("Error : ", e);
       return Response.status(Response.Status.FORBIDDEN).entity(getForbbind()).build();
     }
-    return Response.status(Response.Status.CREATED).entity(getOK()).build();
+
+    return Response.status(Response.Status.NO_CONTENT).entity(getOK()).build();
   }
 }

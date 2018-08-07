@@ -29,7 +29,7 @@ public class CustomerController extends ResponseCommand {
 
     if(customers.isEmpty()) {
       logger.warn("customers No results found.");
-      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+      return Response.status(Response.Status.NO_CONTENT).entity(getNoContent()).build();
     }
 
     String result = gson.toJson(customers);
@@ -50,7 +50,6 @@ public class CustomerController extends ResponseCommand {
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   public Response registerCustomer(final Customer customer) {
-
     try {
       logger.info(customer.toString());
       customer.setPassword(security.sha256(customer.getPassword()));
@@ -59,6 +58,7 @@ public class CustomerController extends ResponseCommand {
       logger.error("Error : ",  e);
       return Response.status(Response.Status.FORBIDDEN).entity(getExist()).build();
     }
+
     return Response.status(Response.Status.CREATED).entity(getOK()).build();
   }
 
@@ -66,7 +66,6 @@ public class CustomerController extends ResponseCommand {
   @Path("{id}")
   @Consumes(MediaType.APPLICATION_JSON)
   public Response modifyCustomer(final @PathParam("id") String id, final Customer customer) {
-
     try {
       logger.info(customer.toString());
       customer.setPassword(security.sha256(customer.getPassword()));
@@ -75,7 +74,8 @@ public class CustomerController extends ResponseCommand {
       logger.error("Error : " , e);
       return Response.status(Response.Status.FORBIDDEN).entity(getExist()).build();
     }
-    return Response.status(Response.Status.CREATED).entity(getOK()).build();
+
+    return Response.status(Response.Status.OK).entity(getOK()).build();
   }
 
   @DELETE
@@ -88,6 +88,6 @@ public class CustomerController extends ResponseCommand {
       return Response.status(Response.Status.FORBIDDEN).entity(getForbbind()).build();
     }
 
-    return Response.status(Response.Status.OK).entity(getOK()).build();
+    return Response.status(Response.Status.NO_CONTENT).entity(getOK()).build();
   }
 }

@@ -8,13 +8,11 @@ import javax.ws.rs.core.Response;
 
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
-public class Hello extends ResponseCommand{
+public class HelloController extends ResponseCommand {
 
   @GET
   public Response responseHello() {
-    Response response;
-    response = Response.status(Response.Status.OK).entity(getOK()).build();
-
-    return response;
+    return Response.status(Response.Status.OK).entity(getOK()).build();
   }
+
 }

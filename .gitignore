@@ -165,3 +165,5 @@ src/test/
 /src/main/java/test/
 src/main/webapp/WEB-INF/
 /src/main/java/io/wisoft/capstone/Utility/email.properties
+/src/main/resources/env/dbms.properties
+/src/main/resources/env/email.properties

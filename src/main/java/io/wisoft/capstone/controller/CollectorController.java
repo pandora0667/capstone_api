@@ -12,7 +12,6 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/collectors")
-
 @Produces(MediaType.APPLICATION_JSON)
 public class CollectorController extends ResponseCommand {
   private static Logger logger = LoggerFactory.getLogger(CollectorController.class);
@@ -27,8 +26,9 @@ public class CollectorController extends ResponseCommand {
 
     if (collectors.isEmpty()) {
       logger.warn("There is no information about the registered collector.");
-      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+      return Response.status(Response.Status.FORBIDDEN).entity(getNoContent()).build();
     }
+
     String result = gson.toJson(collectors);
     return Response.status(Response.Status.OK).entity(result).build();
   }
@@ -41,8 +41,9 @@ public class CollectorController extends ResponseCommand {
 
     if (collectors.isEmpty()) {
       logger.warn("There is no collector for the serial you viewed.");
-      return Response.status(Response.Status.OK).entity(getNoContent()).build();
+      return Response.status(Response.Status.FORBIDDEN).entity(getNoContent()).build();
     }
+
     String result = gson.toJson(collectors);
     return Response.status(Response.Status.OK).entity(result).build();
   }
@@ -65,7 +66,6 @@ public class CollectorController extends ResponseCommand {
   @Path("{serial}")
   @Consumes(MediaType.APPLICATION_JSON)
   public Response updateCollector(final @PathParam("serial") String serial, final Collector collector) {
-
     try {
       logger.info(collector.toString());
       logger.info("{} 건의 사항이 처리되었습니다.", collectorDao.update(collector));
@@ -73,6 +73,7 @@ public class CollectorController extends ResponseCommand {
       logger.error("error : ",  e);
       return Response.status(Response.Status.FORBIDDEN).entity(getInternalServerError()).build();
     }
+
     return Response.status(Response.Status.OK).entity(getOK()).build();
   }
 
@@ -86,6 +87,6 @@ public class CollectorController extends ResponseCommand {
       return Response.status(Response.Status.FORBIDDEN).entity(getForbbind()).build();
     }
 
-    return Response.status(Response.Status.OK).entity(getOK()).build();
+    return Response.status(Response.Status.NO_CONTENT).entity(getOK()).build();
   }
 }
