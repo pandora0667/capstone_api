@@ -24,35 +24,52 @@ repositories {
 }
 
 List jerseyDep = [
-    "org.glassfish.jersey.inject:jersey-hk2:$jerseyVersion",
-    "org.glassfish.jersey.core:jersey-server:$jerseyVersion",
-    "org.glassfish.jersey.containers:jersey-container-jetty-http:$jerseyVersion",
-    "org.glassfish.jersey.containers:jersey-container-servlet-core:$jerseyVersion",
+        "org.glassfish.jersey.inject:jersey-hk2:$jerseyVersion",
+        "org.glassfish.jersey.core:jersey-server:$jerseyVersion",
+        "org.glassfish.jersey.containers:jersey-container-jetty-http:$jerseyVersion",
+        "org.glassfish.jersey.containers:jersey-container-servlet-core:$jerseyVersion",
+]
+
+List jettyDep = [
+        "org.eclipse.jetty:jetty-server:$jettyVersion",
+        "org.eclipse.jetty:jetty-servlet:$jettyVersion"
+]
+
+
+List sl4jDep = [
+        "org.slf4j:slf4j-api:$slf4jVersion",
+        "org.slf4j:slf4j-simple:$slf4jVersion"
+]
+
+List jsonDep = [
+        "com.fasterxml.jackson.core:jackson-annotations:2.8.7",
+        "com.fasterxml.jackson.core:jackson-databind:2.8.7",
+
+        'org.json:json:20180130',
+        'com.google.code.gson:gson:2.8.5'
+]
+
+List databaseDep = [
+        'org.mybatis:mybatis:3.4.6',
+        'org.postgresql:postgresql:42.2.4',
+        'org.projectlombok:lombok:1.18.0'
 ]
 
 dependencies {
-    compile 'org.json:json:20180130'
-    compile 'org.mybatis:mybatis:3.4.6'
-    compile 'org.postgresql:postgresql:42.2.4'
-    compile 'org.projectlombok:lombok:1.18.0'
-    compile 'com.google.code.gson:gson:2.8.5'
-
-    compile "org.slf4j:slf4j-api:$slf4jVersion"
-    compile "org.slf4j:slf4j-simple:$slf4jVersion"
 
     compile "com.sun.xml.bind:jaxb-core:2.3.0"
     compile "com.sun.xml.bind:jaxb-impl:2.3.0"
-    compile "com.fasterxml.jackson.core:jackson-annotations:2.8.7"
-    compile "com.fasterxml.jackson.core:jackson-databind:2.8.7"
     compile "javax.activation:activation:1.1.1"
     compile "javax.xml.bind:jaxb-api:2.3.0"
-
-    compile "org.eclipse.jetty:jetty-server:$jettyVersion"
-    compile "org.eclipse.jetty:jetty-servlet:$jettyVersion"
-
-    compile jerseyDep
-    runtime "org.glassfish.jersey.media:jersey-media-json-jackson:$jerseyVersion"
-
     compile 'javax.mail:mailapi:1.4.3'
+
+    compile jettyDep
+    compile jerseyDep
+    compile sl4jDep
+    compile jsonDep
+    compile databaseDep
+    
+
+    runtime "org.glassfish.jersey.media:jersey-media-json-jackson:$jerseyVersion"
     testCompile 'junit:junit:4.12'
 }

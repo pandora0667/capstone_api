@@ -21,7 +21,7 @@ public class Initialization {
     final Server server = new Server(8080);
     server.setHandler(contextHandler);
 
-    final ServletHolder servletHolder = contextHandler.addServlet(ServletContainer.class, "/capstone/v1/api/*");
+    final ServletHolder servletHolder = contextHandler.addServlet(ServletContainer.class, "/2018/capstone/v1/api/*");
     servletHolder.setInitOrder(1);
     servletHolder.setInitParameter("jersey.config.server.provider.packages", "io.wisoft.capstone.controller");
 

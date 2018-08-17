@@ -21,7 +21,7 @@ public class RegularController extends ResponseCommand {
 
   @GET
   @Path("{serial}")
-  public Response getRegulars(final @PathParam("serial") String serial) {
+  public Response getRegularsByCollectorSerial(final @PathParam("serial") String serial) {
     List<Regular> regulars = regularDao.selectList(serial);
     logger.info("GET request to regulars/{} controller", serial);
 
@@ -50,7 +50,7 @@ public class RegularController extends ResponseCommand {
 
   @DELETE
   @Path("{serial}")
-  public Response deleteRegular(final @PathParam("serial") String serial) {
+  public Response deleteRegularByCollectorSerial(final @PathParam("serial") String serial) {
     try {
       logger.info("{} 건의 사항이 처리되었습니다.", regularDao.delete(serial));
     } catch (final Exception e) {

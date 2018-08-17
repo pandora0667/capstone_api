@@ -23,7 +23,7 @@ public class AccidentController extends ResponseCommand {
   // TODO 메소드 이름 혹은 변수 이름 변경 (확실하지 않음)
   @GET
   @Path("{serial}")
-  public Response getAccidents(final @PathParam("serial") String serial) {
+  public Response getAccidentsByCollectorSerial(final @PathParam("serial") String serial) {
     List<Accident> accidents = accidentDao.selectList(serial);
     logger.info("GET request to accidents/{} controller", serial);
 
@@ -51,7 +51,7 @@ public class AccidentController extends ResponseCommand {
 
   @DELETE
   @Path("{serial}")
-  public Response deleteAccident(final @PathParam("serial") String serial) {
+  public Response deleteAccidentByCollectorSerial(final @PathParam("serial") String serial) {
     try {
       logger.info("{} 건의 사항이 처리되었습니다.", accidentDao.delete(serial));
     } catch (final Exception e) {
