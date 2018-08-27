@@ -12,11 +12,13 @@
         <result column="inclination" property="inclination"/>
         <result column="latitude" property="latitude"/>
         <result column="longitude" property="longitude"/>
+        <result column="temperature" property="temperature"/>
+        <result column="gyro" property="gyro"/>
     </resultMap>
 
     <insert id="insert" parameterType="accident">
         INSERT INTO accident VALUES (#{status}, #{accelerationX}, #{accelerationY}, #{accelerationZ}, #{inclination},
-        #{latitude}, #{longitude}, #{serial})
+        #{latitude}, #{longitude}, #{serial}, #{temperature}, #{gyro})
     </insert>
 
     <select id="selectList" parameterType="String" resultMap="AccidentResultMap">
@@ -28,3 +30,4 @@
     </delete>
 
 </mapper>
+
