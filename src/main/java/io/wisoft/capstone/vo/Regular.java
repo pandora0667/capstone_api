@@ -15,18 +15,22 @@ public class Regular {
   private String accelerationY;
   private String accelerationZ;
   private String inclination;
+  private String gyro;
+  private String speed;
 
   public Regular() {
 
   }
 
   public Regular(final String serial, final String accelerationX, final String accelerationY,
-                 final String accelerationZ, final String inclination) {
+                 final String accelerationZ, final String inclination, final String gyro, final String speed) {
     this.serial = serial;
     this.accelerationX = accelerationX;
     this.accelerationY = accelerationY;
     this.accelerationZ = accelerationZ;
     this.inclination = inclination;
+    this.gyro = gyro;
+    this.speed = speed;
   }
 
   public String getSerial() {
@@ -67,5 +71,21 @@ public class Regular {
 
   public void setInclination(final String inclination) {
     this.inclination = inclination;
+  }
+
+  public String getGyro() {
+    return gyro;
+  }
+
+  public void setGyro(String gyro) {
+    this.gyro = gyro;
+  }
+
+  public String getSpeed() {
+    return speed;
+  }
+
+  public void setSpeed(String speed) {
+    this.speed = speed;
   }
 }
