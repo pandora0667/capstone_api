@@ -15,13 +15,16 @@ public class Accident {
   private String inclination;
   private String latitude;
   private String longitude;
+  private String temperature;
+  private String gyro;
 
   public Accident() {
 
   }
 
   public Accident(final int status, final String serial, final String accelerationX, final String accelerationY,
-                  final String accelerationZ, final String inclination, final String latitude, final String longitude) {
+                  final String accelerationZ, final String inclination, final String latitude, final String longitude,
+                  final String gyro, final String temperature) {
     this.status = status;
     this.serial = serial;
     this.accelerationX = accelerationX;
@@ -30,6 +33,8 @@ public class Accident {
     this.inclination = inclination;
     this.latitude = latitude;
     this.longitude = longitude;
+    this.gyro = gyro;
+    this.temperature = temperature;
   }
 
   public int getStatus() {
@@ -94,5 +99,21 @@ public class Accident {
 
   public void setLongitude(final String longitude) {
     this.longitude = longitude;
+  }
+
+  public String getTemperature() {
+    return temperature;
+  }
+
+  public void setTemperature(String temperature) {
+    this.temperature = temperature;
+  }
+
+  public String getGyro() {
+    return gyro;
+  }
+
+  public void setGyro(String gyro) {
+    this.gyro = gyro;
   }
 }
