@@ -2,32 +2,28 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.wisoft.capstone.dao.InterfaceAccidentDao">
-    <resultMap type="accident" id="AccidentResultMap">
+<mapper namespace="io.wisoft.capstone.dao.InterfaceRegularDao">
+    <resultMap type="regular" id="RegularResultMap">
         <id column="serial" property="serial"/>
-        <result column="status" property="status"/>
         <result column="accelerationX" property="accelerationX"/>
         <result column="accelerationY" property="accelerationY"/>
         <result column="accelerationZ" property="accelerationZ"/>
         <result column="inclination" property="inclination"/>
-        <result column="latitude" property="latitude"/>
-        <result column="longitude" property="longitude"/>
-        <result column="temperature" property="temperature"/>
         <result column="gyro" property="gyro"/>
+        <result column="speed" property="speed"/>
     </resultMap>
 
-    <insert id="insert" parameterType="accident">
-        INSERT INTO accident VALUES (#{status}, #{accelerationX}, #{accelerationY}, #{accelerationZ}, #{inclination},
-        #{latitude}, #{longitude}, #{serial}, #{temperature}, #{gyro})
+    <insert id="insert" parameterType="regular">
+        INSERT INTO regular VALUES (#{accelerationX}, #{accelerationY}, #{accelerationZ}, #{inclination}, #{serial}, #{gyro}, #{speed});
     </insert>
 
-    <select id="selectList" parameterType="String" resultMap="AccidentResultMap">
-        SELECT * FROM accident WHERE serial = #{serial}
+    <select id="selectList" parameterType="String" resultMap="RegularResultMap">
+        SELECT * FROM regular WHERE serial = #{serial}
     </select>
 
     <delete id="delete" parameterType="String">
-        DELETE FROM accident WHERE serial = #{serial}
+        DELETE FROM regular WHERE serial = #{serial}
     </delete>
-
 </mapper>
+
 
